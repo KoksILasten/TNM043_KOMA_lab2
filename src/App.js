@@ -17,16 +17,15 @@ function App() {
 
   return (
     <div className="App">
+      <div className="search">
+        <input
+          type="text"
+          placeholder="type something..."
+          onInput={consoleReturn}
+        />
+      </div>
       <header className="App-header">
         <div className="left_column">
-          <div className="search">
-            <input
-              type="text"
-              placeholder="type something..."
-              onInput={consoleReturn}
-            />
-          </div>
-
           {countries.slice(0, 5).map((c) => {
             return <CountryInfo data={c} key={c.ccn3} details={true} />;
           })}
