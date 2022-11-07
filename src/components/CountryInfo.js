@@ -1,11 +1,14 @@
 import React from 'react'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 const CountryInfo = ({ data, details, max }) => {
   return (
     <div className='CountryInfo'>
       <div className='top'>
-        <p className='name'>{data.name.common}</p>
+        <Link to={'/country/' + data.cca3} className='name'>
+          {data.name.common}
+        </Link>
         <p className='area'>
           {(data.area / Math.pow(10, 6)).toFixed(1)} million km<sup>2</sup>
         </p>

@@ -1,56 +1,20 @@
 import './App.css'
-import countries from 'world-countries'
-import CountryInfo from './components/CountryInfo.js'
+import React from 'react'
+import Layout from './pages/Layout.js'
+import CountryList from './components/CountryList.js'
+import CountryDetails from './pages/CountryDetails.js'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App () {
-  countries.sort((a, b) => {
-    return b.area - a.area
-  })
-
-  const filtredCountries = countries.filter(country => {
-    return country.name.common !== 'Antarctica'
-  })
-
-  const consoleReturn = e => {
-    console.log('You Typed: ' + e.target.value)
-  }
-
   return (
-    <div className='App'>
-      <div className='search'>
-        <input
-          type='text'
-          placeholder='type something...'
-          onInput={consoleReturn}
-        />
-      </div>
-      <header className='App-header'>
-        <div className='left_column'>
-          {filtredCountries.slice(0, 5).map(c => {
-            return (
-              <CountryInfo
-                data={c}
-                max={filtredCountries[0].area}
-                key={c.ccn3}
-                details
-              />
-            )
-          })}
-        </div>
-        <div className='right_column'>
-          {filtredCountries.slice(6, 17).map(c => {
-            return (
-              <CountryInfo
-                data={c}
-                max={filtredCountries[0].area}
-                key={c.ccn3}
-                details={false}
-              />
-            )
-          })}
-        </div>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<CountryList />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='/country/:cca3' element={<CountryDetails />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

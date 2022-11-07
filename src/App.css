@@ -30,18 +30,10 @@
   align-self: center;
 }
 
-.right_column{
-  width: 30%;
+.countries{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-
-.left_column{
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-evenly;  
 }
 
 
